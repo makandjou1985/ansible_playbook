@@ -1,0 +1,25 @@
+---
+
+- hosts: all 
+  ignore_errors: yes
+  become: yes
+  tasks:
+    - name: Create user
+      user:
+        name: joe
+        comment: joe bob
+
+
+    - name: Create directory 
+      file:
+       path: /tmp/devop-ans
+       state: directory
+       owner: joe
+       mode: "0777"
+
+    - name: Create file
+      file:
+       path: /tmp/devop-class
+       state: touch 
+       owner: joe  
+       mode: "0600"
